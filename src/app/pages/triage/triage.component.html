@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NUEVO TRIAGE</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <style>
+    textarea::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    textarea::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 0, 0, 0.1);
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-[#a3c0e8] to-white min-h-screen font-sans text-[#4a5568]">
+  <div class="flex">
+
+    <!-- Sidebar -->
+    <nav aria-label="Sidebar" class="flex flex-col border-r border-gray-300 bg-white w-56 min-h-screen text-[#002a4e]">
+      <button aria-label="Menu" class="bg-[#2a8de1] text-white p-2 m-3 rounded shadow-md w-10 h-10 flex items-center justify-center">
+        <i class="fas fa-bars"></i>
+      </button>
+      <a class="flex items-center gap-2 px-5 py-3 font-bold border-b border-gray-300 hover:bg-[#e6f0fa]" href="#">
+        <i class="fas fa-procedures"></i> PACIENTES
+      </a>
+      <a class="flex items-center gap-2 px-5 py-3 font-bold border-b border-gray-300 hover:bg-[#e6f0fa]" href="#">
+        <i class="fas fa-stethoscope"></i> ATENDER PACIENTE
+      </a>
+      <a class="flex items-center gap-2 px-5 py-3 font-bold border-b border-gray-300 hover:bg-[#e6f0fa]" href="#">
+        <i class="fas fa-building"></i> TRIAGE
+      </a>
+      <a class="flex items-center gap-2 px-5 py-3 font-bold border-b border-gray-300 hover:bg-[#e6f0fa]" href="#">
+        <i class="fas fa-user-friends"></i> ASISTENTE DE CITAS
+      </a>
+      <a class="flex items-center gap-2 px-5 py-3 font-bold border-b border-gray-300 hover:bg-[#e6f0fa]" href="#">
+        <i class="fas fa-chart-bar"></i> REPORTES
+      </a>
+      <a class="flex items-center gap-2 px-5 py-3 font-bold border-b border-gray-300 hover:bg-[#e6f0fa]" href="#">
+        <img alt="CIE10" class="inline-block" height="20" src="https://storage.googleapis.com/a1aa/image/a7795423-cd3c-4988-6c8a-7c06f2b9425b.jpg" width="20"/>
+        CIE 10
+      </a>
+      <a class="flex items-center gap-2 px-5 py-3 font-bold border-b border-gray-300 hover:bg-[#e6f0fa]" href="#">
+        <img alt="CUPS" class="inline-block" height="20" src="https://storage.googleapis.com/a1aa/image/6de32a5b-9b3a-4c5b-0e57-b988033e2674.jpg" width="20"/>
+        CUPS
+      </a>
+      <a class="flex items-center gap-2 px-5 py-3 font-bold border-b border-gray-300 hover:bg-[#e6f0fa]" href="#">
+        <i class="fas fa-dollar-sign"></i> TARIFAS
+      </a>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main class="flex-1 p-4">
+      <form class="max-w-4xl mx-auto bg-white bg-opacity-70 rounded-md p-4 shadow-sm">
+
+        <!-- Título -->
+        <div class="text-center mb-4">
+          <h1 class="text-xl font-bold text-[#2d3748] mb-1">NUEVO TRIAGE</h1>
+        </div>
+
+        <!-- Fecha y hora -->
+        <div class="mb-4">
+          <label for="fechaHora" class="block text-sm text-gray-600 mb-1">Fecha y Hora</label>
+          <input type="datetime-local" id="fechaHora" name="fechaHora" class="w-full border border-gray-300 rounded-md p-2 text-sm focus:outline-none focus:ring-1 focus:ring-blue-400" />
+        </div>
+
+        <!-- Prioridad -->
+        <div class="mb-4">
+          <label for="prioridad" class="block text-sm font-semibold mb-1">Prioridad</label>
+          <select id="prioridad" name="prioridad" class="w-full border border-gray-300 rounded-md p-2 text-sm focus:outline-none focus:ring-1 focus:ring-blue-400">
+            <option value="1">Prioridad 1: Reanimación</option>
+            <option value="2">Prioridad 2: Emergencia</option>
+            <option value="3">Prioridad 3: Urgencias</option>
+            <option value="4">Prioridad 4: Urgencia menor</option>
+            <option value="5">Prioridad 5: No urgente</option>
+          </select>
+        </div>
+
+        <!-- Motivo Consulta -->
+        <label for="motivo" class="block font-semibold text-sm mb-1">Motivo Consulta</label>
+        <textarea id="motivo" rows="3" class="w-full border border-gray-300 rounded-md p-2 text-xs resize-y focus:outline-none focus:ring-1 focus:ring-blue-400"></textarea>
+
+        <!-- Gsc y checkboxes -->
+        <div class="flex flex-wrap items-center gap-6 mt-4 text-xs font-semibold">
+          <div class="flex items-center gap-2">
+            <label for="gsc" class="font-semibold">Gsc</label>
+            <input id="gsc" type="text" value="9" class="w-14 border border-gray-300 rounded px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-blue-400" />
+          </div>
+          <div class="flex items-center gap-1"><input id="alerta" type="checkbox" class="w-4 h-4" /><label for="alerta">Alerta</label></div>
+          <div class="flex items-center gap-1"><input id="obnubilacion" type="checkbox" class="w-4 h-4" /><label for="obnubilacion">Obnubilación</label></div>
+          <div class="flex items-center gap-1"><input id="estupor" type="checkbox" class="w-4 h-4" /><label for="estupor">Estupor</label></div>
+          <div class="flex items-center gap-1"><input id="coma" type="checkbox" checked class="w-4 h-4" /><label for="coma">Coma</label></div>
+        </div>
+
+        <!-- Signos Vitales -->
+        <p class="mt-4 text-xs font-semibold">Signos Vitales</p>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-1 text-xs font-semibold">
+          <div><label for="pa" class="block mb-1">PA</label><input id="pa" type="text" class="w-full border border-gray-300 rounded-md p-2 text-xs" /></div>
+          <div><label for="fc" class="block mb-1">FC</label><input id="fc" type="text" class="w-full border border-gray-300 rounded-md p-2 text-xs" /></div>
+          <div><label for="fr" class="block mb-1">FR</label><input id="fr" type="text" class="w-full border border-gray-300 rounded-md p-2 text-xs" /></div>
+          <div><label for="temperatura" class="block mb-1">Temperatura</label><input id="temperatura" type="text" class="w-full border border-gray-300 rounded-md p-2 text-xs" /></div>
+        </div>
+
+        <!-- Pulso y Oximetría -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4 text-xs font-semibold">
+          <div>
+            <label for="pulso2" class="block mb-1">Pulso</label>
+            <select id="pulso2" class="w-full border border-gray-300 rounded-md p-2 text-xs">
+              <option>REGULAR</option>
+              <option>INREGULAR</option>
+            </select>
+          </div>
+          <div>
+            <label for="oximetria" class="block mb-1">Oximetría De Pulso</label>
+            <input id="oximetria" type="text" value="0" class="w-full border border-gray-300 rounded-md p-2 text-xs" />
+          </div>
+        </div>
+
+        <!-- Glucometría -->
+        <div class="mt-4">
+          <label for="glucometria" class="block text-xs font-semibold mb-1">Glucometría</label>
+          <input id="glucometria" type="text" class="w-full border border-gray-300 rounded-md p-2 text-xs" />
+        </div>
+
+        <!-- Antecedentes -->
+        <div class="mt-4">
+          <label for="antecedentes" class="block text-xs font-semibold mb-1">Antecedentes Relevantes</label>
+          <textarea id="antecedentes" rows="3" class="w-full border border-gray-300 rounded-md p-2 text-xs resize-y"></textarea>
+        </div>
+
+        <!-- Botones -->
+        <div class="mt-4 flex flex-wrap gap-2">
+          <button type="submit" class="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white text-xs font-bold px-3 py-2 rounded">
+            <i class="fas fa-save"></i> GUARDAR TRIAGE
+          </button>
+          <button type="button" class="flex items-center gap-2 bg-sky-400 hover:bg-sky-500 text-white text-xs font-bold px-3 py-2 rounded">
+            LISTADO DE TRIAGES
+          </button>
+        </div>
+
+      </form>
+    </main>
+
+  </div>
+
+  <script>
+    document.querySelectorAll('input[type="text"], textarea').forEach(el => {
+      el.addEventListener('focus', function () {
+        if (!this.dataset.edited) {
+          this.value = '';
+          this.dataset.edited = 'true';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
