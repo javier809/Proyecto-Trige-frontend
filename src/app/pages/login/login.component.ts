@@ -3,6 +3,7 @@ import { UsuarioService } from '../../servicios/usuario.service';
 import { Usuario } from '../../modelos/usuario';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,9 @@ export class LoginComponent implements OnInit {
   email: string = '';
   password: string = '';
 
-  constructor(private usuarioService: UsuarioService) {}
+  constructor(private usuarioService: UsuarioService,
+    private router: Router 
+  ) {}
 
   ngOnInit(): void {
     this.usuarioService.getUsuarios().subscribe({
@@ -40,6 +43,7 @@ export class LoginComponent implements OnInit {
     );
 
     if (usuarioEncontrado) {
+      this.router.navigate(['/inicio',usuarioEncontrado.id]);
       console.log('Usuario accedió:', usuarioEncontrado);
     } else {
       console.log('Credenciales incorrectas');
