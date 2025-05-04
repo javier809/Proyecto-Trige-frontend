@@ -19,7 +19,7 @@
       <button aria-label="Menu" class="bg-[#2a8de1] text-white p-2 m-3 rounded shadow-md w-10 h-10 flex items-center justify-center">
         <i class="fas fa-bars"></i>
       </button>
-      <a class="flex items-center gap-2 px-5 py-3 font-bold border-b border-gray-300 hover:bg-[#e6f0fa]" href="#">
+      <a class="flex items-center gap-2 px-5 py-3 font-bold border-b border-gray-300 hover:bg-[#e6f0fa]" href="paciente">
         <i class="fas fa-procedures"></i>
         PACIENTES
       </a>
@@ -27,7 +27,7 @@
         <i class="fas fa-stethoscope"></i>
         ATENDER PACIENTE
       </a>
-      <a class="flex items-center gap-2 px-5 py-3 font-bold border-b border-gray-300 hover:bg-[#e6f0fa]" href="#">
+      <a class="flex items-center gap-2 px-5 py-3 font-bold border-b border-gray-300 hover:bg-[#e6f0fa]" href="/triage">
         <i class="fas fa-building"></i>
         TRIAGE
       </a>
@@ -35,7 +35,7 @@
         <i class="fas fa-user-friends"></i>
         ASISTENTE DE CITAS
       </a>
-      <a class="flex items-center gap-2 px-5 py-3 font-bold border-b border-gray-300 hover:bg-[#e6f0fa]" href="#">
+      <a class="flex items-center gap-2 px-5 py-3 font-bold border-b border-gray-300 hover:bg-[#e6f0fa]" href="reporte">
         <i class="fas fa-chart-bar"></i>
         REPORTES
       </a>
@@ -56,12 +56,10 @@
     <!-- Main content -->
     <main class="flex-1 p-6">
       <!-- Header with logo and buttons -->
-      <header class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-        <div class="flex items-center gap-2 mb-4 md:mb-0">
-          <img alt="Blue logo with letters SO and heartbeat line inside circle" class="w-28 h-auto" height="100" src="https://storage.googleapis.com/a1aa/image/3baf92e5-7955-4d37-125a-b14b213401f3.jpg" width="120"/>
-          <div class="text-[#2a8de1] font-extrabold text-3xl leading-tight">
-            Software <br/> Médico
-          </div>
+      <header class="flex justify-between items-center mb-6">
+        <div class="flex items-center gap-4">
+          <img src="assets/logo.png" alt="Logo" class="h-10">
+          <h1 class="text-xl font-bold text-gray-800">Sistema Médico</h1>
         </div>
         
         <!-- Datos del usuario dinámicos -->
@@ -74,8 +72,8 @@
             ROL: {{ usuarioEncontrado.rol | uppercase }}
             <i class="fas fa-user"></i>
           </button>
-          <button class="bg-[#7db9e8] text-white text-xs font-semibold px-3 py-1 rounded">
-            IMPRESIÓN
+          <button (click)="cerrarSesion()" class="bg-red-500 text-white text-xs font-semibold px-3 py-1 rounded">
+            CERRAR SESIÓN
           </button>
         </div>
       </header>
@@ -145,14 +143,9 @@
       </div>
     </main>
 
-    <!-- Top right buttons -->
-    <div class="fixed top-4 right-4 flex flex-col gap-2 z-50">
-      <button class="bg-[#2a8de1] text-white text-xs font-semibold px-4 py-1 rounded">
-        Ayuda
-      </button>
-      <button class="bg-[#b07a4a] text-white text-xs font-semibold px-4 py-1 rounded">
-        Cerrar sesión
-      </button>
+    <div *ngIf="isLoading" class="text-center py-8">
+      <i class="fas fa-spinner fa-spin fa-2x text-blue-500"></i>
+      <p class="mt-2">Cargando información del usuario...</p>
     </div>
   </div>
 </body>

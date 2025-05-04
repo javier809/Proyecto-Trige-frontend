@@ -3,6 +3,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',

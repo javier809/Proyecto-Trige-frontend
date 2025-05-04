@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NUEVO TRIAGE</title>
+  <title>Nuevo Triaje</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
   <style>
@@ -17,145 +17,199 @@
     }
   </style>
 </head>
-<body class="bg-gradient-to-b from-[#a3c0e8] to-white min-h-screen font-sans text-[#4a5568]">
+<body class="bg-gradient-to-b from-blue-200 to-white min-h-screen font-sans text-gray-700">
   <div class="flex">
-
     <!-- Sidebar -->
-    <nav aria-label="Sidebar" class="flex flex-col border-r border-gray-300 bg-white w-56 min-h-screen text-[#002a4e]">
-      <button aria-label="Menu" class="bg-[#2a8de1] text-white p-2 m-3 rounded shadow-md w-10 h-10 flex items-center justify-center">
+    <nav class="flex flex-col w-56 min-h-screen bg-white border-r border-gray-300 text-blue-900">
+      <button aria-label="Menu" class="bg-blue-600 text-white p-2 m-3 rounded shadow w-10 h-10 flex items-center justify-center">
         <i class="fas fa-bars"></i>
       </button>
-      <a class="flex items-center gap-2 px-5 py-3 font-bold border-b border-gray-300 hover:bg-[#e6f0fa]" href="#">
+      <a href="paciente" class="flex items-center gap-2 px-5 py-3 font-bold border-b border-gray-300 hover:bg-blue-100">
         <i class="fas fa-procedures"></i> PACIENTES
       </a>
-      <a class="flex items-center gap-2 px-5 py-3 font-bold border-b border-gray-300 hover:bg-[#e6f0fa]" href="#">
+      <a href="#" class="flex items-center gap-2 px-5 py-3 font-bold border-b border-gray-300 hover:bg-blue-100">
         <i class="fas fa-stethoscope"></i> ATENDER PACIENTE
       </a>
-      <a class="flex items-center gap-2 px-5 py-3 font-bold border-b border-gray-300 hover:bg-[#e6f0fa]" href="#">
+      <a href="triage" class="flex items-center gap-2 px-5 py-3 font-bold border-b border-gray-300 hover:bg-blue-100">
         <i class="fas fa-building"></i> TRIAGE
       </a>
-      <a class="flex items-center gap-2 px-5 py-3 font-bold border-b border-gray-300 hover:bg-[#e6f0fa]" href="#">
+      <a href="#" class="flex items-center gap-2 px-5 py-3 font-bold border-b border-gray-300 hover:bg-blue-100">
         <i class="fas fa-user-friends"></i> ASISTENTE DE CITAS
       </a>
-      <a class="flex items-center gap-2 px-5 py-3 font-bold border-b border-gray-300 hover:bg-[#e6f0fa]" href="#">
+      <a href="reporte" class="flex items-center gap-2 px-5 py-3 font-bold border-b border-gray-300 hover:bg-blue-100">
         <i class="fas fa-chart-bar"></i> REPORTES
       </a>
-      <a class="flex items-center gap-2 px-5 py-3 font-bold border-b border-gray-300 hover:bg-[#e6f0fa]" href="#">
-        <img alt="CIE10" class="inline-block" height="20" src="https://storage.googleapis.com/a1aa/image/a7795423-cd3c-4988-6c8a-7c06f2b9425b.jpg" width="20"/>
-        CIE 10
+      <a href="#" class="flex items-center gap-2 px-5 py-3 font-bold border-b border-gray-300 hover:bg-blue-100">
+        <img src="https://storage.googleapis.com/a1aa/image/a7795423-cd3c-4988-6c8a-7c06f2b9425b.jpg" class="inline-block w-5 h-5" alt="CIE10" /> CIE 10
       </a>
-      <a class="flex items-center gap-2 px-5 py-3 font-bold border-b border-gray-300 hover:bg-[#e6f0fa]" href="#">
-        <img alt="CUPS" class="inline-block" height="20" src="https://storage.googleapis.com/a1aa/image/6de32a5b-9b3a-4c5b-0e57-b988033e2674.jpg" width="20"/>
-        CUPS
+      <a href="#" class="flex items-center gap-2 px-5 py-3 font-bold border-b border-gray-300 hover:bg-blue-100">
+        <img src="https://storage.googleapis.com/a1aa/image/6de32a5b-9b3a-4c5b-0e57-b988033e2674.jpg" class="inline-block w-5 h-5" alt="CUPS" /> CUPS
       </a>
-      <a class="flex items-center gap-2 px-5 py-3 font-bold border-b border-gray-300 hover:bg-[#e6f0fa]" href="#">
+      <a href="#" class="flex items-center gap-2 px-5 py-3 font-bold border-b border-gray-300 hover:bg-blue-100">
         <i class="fas fa-dollar-sign"></i> TARIFAS
       </a>
     </nav>
 
-    <!-- Contenido principal -->
-    <main class="flex-1 p-4">
-      <form class="max-w-4xl mx-auto bg-white bg-opacity-70 rounded-md p-4 shadow-sm">
-
-        <!-- Título -->
-        <div class="text-center mb-4">
-          <h1 class="text-xl font-bold text-[#2d3748] mb-1">NUEVO TRIAGE</h1>
+    <!-- Formulario -->
+    <div class="flex-1 p-8">
+      <div class="max-w-5xl mx-auto bg-white rounded shadow p-6">
+        <h2 class="text-2xl font-bold text-center text-blue-700 mb-6">Registro de Triaje</h2>
+    
+        <!-- Spinner de carga -->
+        <div *ngIf="cargando" class="text-center py-5">
+          <div class="animate-spin inline-block w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full"></div>
+          <p class="mt-2 text-blue-600">Cargando datos necesarios...</p>
         </div>
-
-        <!-- Fecha y hora -->
-        <div class="mb-4">
-          <label for="fechaHora" class="block text-sm text-gray-600 mb-1">Fecha y Hora</label>
-          <input type="datetime-local" id="fechaHora" name="fechaHora" class="w-full border border-gray-300 rounded-md p-2 text-sm focus:outline-none focus:ring-1 focus:ring-blue-400" />
-        </div>
-
-        <!-- Prioridad -->
-        <div class="mb-4">
-          <label for="prioridad" class="block text-sm font-semibold mb-1">Prioridad</label>
-          <select id="prioridad" name="prioridad" class="w-full border border-gray-300 rounded-md p-2 text-sm focus:outline-none focus:ring-1 focus:ring-blue-400">
-            <option value="1">Prioridad 1: Reanimación</option>
-            <option value="2">Prioridad 2: Emergencia</option>
-            <option value="3">Prioridad 3: Urgencias</option>
-            <option value="4">Prioridad 4: Urgencia menor</option>
-            <option value="5">Prioridad 5: No urgente</option>
-          </select>
-        </div>
-
-        <!-- Motivo Consulta -->
-        <label for="motivo" class="block font-semibold text-sm mb-1">Motivo Consulta</label>
-        <textarea id="motivo" rows="3" class="w-full border border-gray-300 rounded-md p-2 text-xs resize-y focus:outline-none focus:ring-1 focus:ring-blue-400"></textarea>
-
-        <!-- Gsc y checkboxes -->
-        <div class="flex flex-wrap items-center gap-6 mt-4 text-xs font-semibold">
-          <div class="flex items-center gap-2">
-            <label for="gsc" class="font-semibold">Gsc</label>
-            <input id="gsc" type="text" value="9" class="w-14 border border-gray-300 rounded px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-blue-400" />
+    
+        <form *ngIf="!cargando" (ngSubmit)="onSubmit()" #triajeForm="ngForm" class="space-y-6">
+    
+          <!-- Mensajes -->
+          <div *ngIf="mensajeExito" class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">
+            {{ mensajeExito }}
+            <button type="button" class="float-right" (click)="mensajeExito = null">✖</button>
           </div>
-          <div class="flex items-center gap-1"><input id="alerta" type="checkbox" class="w-4 h-4" /><label for="alerta">Alerta</label></div>
-          <div class="flex items-center gap-1"><input id="obnubilacion" type="checkbox" class="w-4 h-4" /><label for="obnubilacion">Obnubilación</label></div>
-          <div class="flex items-center gap-1"><input id="estupor" type="checkbox" class="w-4 h-4" /><label for="estupor">Estupor</label></div>
-          <div class="flex items-center gap-1"><input id="coma" type="checkbox" checked class="w-4 h-4" /><label for="coma">Coma</label></div>
-        </div>
-
-        <!-- Signos Vitales -->
-        <p class="mt-4 text-xs font-semibold">Signos Vitales</p>
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-1 text-xs font-semibold">
-          <div><label for="pa" class="block mb-1">PA</label><input id="pa" type="text" class="w-full border border-gray-300 rounded-md p-2 text-xs" /></div>
-          <div><label for="fc" class="block mb-1">FC</label><input id="fc" type="text" class="w-full border border-gray-300 rounded-md p-2 text-xs" /></div>
-          <div><label for="fr" class="block mb-1">FR</label><input id="fr" type="text" class="w-full border border-gray-300 rounded-md p-2 text-xs" /></div>
-          <div><label for="temperatura" class="block mb-1">Temperatura</label><input id="temperatura" type="text" class="w-full border border-gray-300 rounded-md p-2 text-xs" /></div>
-        </div>
-
-        <!-- Pulso y Oximetría -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4 text-xs font-semibold">
+          <div *ngIf="mensajeError" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+            {{ mensajeError }}
+            <button type="button" class="float-right" (click)="mensajeError = null">✖</button>
+          </div>
+    
+          <!-- Selectores -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+              <label class="block font-medium mb-1" for="paciente_id">Paciente</label>
+              <select class="form-select w-full border rounded px-3 py-2" id="paciente_id"
+                      [(ngModel)]="triaje.paciente_id" name="paciente_id" required>
+                <option value="" disabled selected>Seleccione un paciente</option>
+                <option *ngFor="let paciente of pacientes" [value]="paciente.id">
+                  {{ paciente.nombre }} {{ paciente.apellido }} ({{ paciente.documento_identidad }})
+                </option>
+              </select>
+            </div>
+            <div>
+              <label class="block font-medium mb-1" for="personal_salud_id">Personal de Salud</label>
+              <select class="form-select w-full border rounded px-3 py-2" id="personal_salud_id"
+                      [(ngModel)]="triaje.personal_salud_id" name="personal_salud_id" required>
+                <option value="" disabled selected>Seleccione profesional</option>
+                <option *ngFor="let personal of personalSalud" [value]="personal.id">
+                  {{ personal.nombre }} {{ personal.apellido }} ({{ personal.rol }})
+                </option>
+              </select>
+            </div>
+            <div>
+              <label class="block font-medium mb-1" for="recurso_hospitalario_id">Recurso Hospitalario</label>
+              <select class="form-select w-full border rounded px-3 py-2" id="recurso_hospitalario_id"
+                      [(ngModel)]="triaje.recurso_hospitalario_id" name="recurso_hospitalario_id">
+                <option value="" selected>No aplica</option>
+                <option *ngFor="let recurso of recursosHospitalarios" [value]="recurso.id">
+                  {{ recurso.nombre }} ({{ recurso.tipo }})
+                </option>
+              </select>
+            </div>
+          </div>
+    
+          <!-- Fecha y Hora -->
           <div>
-            <label for="pulso2" class="block mb-1">Pulso</label>
-            <select id="pulso2" class="w-full border border-gray-300 rounded-md p-2 text-xs">
-              <option>REGULAR</option>
-              <option>INREGULAR</option>
-            </select>
+            <label class="block font-medium mb-1">Fecha y Hora</label>
+            <input type="datetime-local" class="w-full border rounded px-3 py-2"
+                   [(ngModel)]="triaje.fecha_hora" name="fecha_hora" required />
           </div>
-          <div>
-            <label for="oximetria" class="block mb-1">Oximetría De Pulso</label>
-            <input id="oximetria" type="text" value="0" class="w-full border border-gray-300 rounded-md p-2 text-xs" />
+    
+          <!-- Signos Vitales -->
+          <div class="border rounded p-4">
+            <h3 class="font-semibold text-lg mb-4">Signos Vitales</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div>
+                <label class="block font-medium mb-1">Presión Arterial</label>
+                <input type="text" class="w-full border rounded px-3 py-2"
+                       [(ngModel)]="triaje.signos_vitales.presion_arterial" name="presion_arterial" required />
+              </div>
+              <div>
+                <label class="block font-medium mb-1">Frecuencia Cardíaca</label>
+                <input type="number" class="w-full border rounded px-3 py-2"
+                       [(ngModel)]="triaje.signos_vitales.frecuencia_cardiaca" name="frecuencia_cardiaca" required />
+              </div>
+              <div>
+                <label class="block font-medium mb-1">Temperatura (°C)</label>
+                <input type="number" step="0.1" class="w-full border rounded px-3 py-2"
+                       [(ngModel)]="triaje.signos_vitales.temperatura" name="temperatura" required />
+              </div>
+              <div>
+                <label class="block font-medium mb-1">Frecuencia Respiratoria</label>
+                <input type="number" class="w-full border rounded px-3 py-2"
+                       [(ngModel)]="triaje.signos_vitales.frecuencia_respiratoria" name="frecuencia_respiratoria" required />
+              </div>
+              <div>
+                <label class="block font-medium mb-1">Saturación de Oxígeno (%)</label>
+                <input type="number" class="w-full border rounded px-3 py-2"
+                       [(ngModel)]="triaje.signos_vitales.saturacion_oxigeno" name="saturacion_oxigeno" required />
+              </div>
+              <div>
+                <label class="block font-medium mb-1">Glucosa (mg/dL)</label>
+                <input type="number" class="w-full border rounded px-3 py-2"
+                       [(ngModel)]="triaje.signos_vitales.glucosa" name="glucosa" required />
+              </div>
+            </div>
           </div>
-        </div>
-
-        <!-- Glucometría -->
-        <div class="mt-4">
-          <label for="glucometria" class="block text-xs font-semibold mb-1">Glucometría</label>
-          <input id="glucometria" type="text" class="w-full border border-gray-300 rounded-md p-2 text-xs" />
-        </div>
-
-        <!-- Antecedentes -->
-        <div class="mt-4">
-          <label for="antecedentes" class="block text-xs font-semibold mb-1">Antecedentes Relevantes</label>
-          <textarea id="antecedentes" rows="3" class="w-full border border-gray-300 rounded-md p-2 text-xs resize-y"></textarea>
-        </div>
-
-        <!-- Botones -->
-        <div class="mt-4 flex flex-wrap gap-2">
-          <button type="submit" class="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white text-xs font-bold px-3 py-2 rounded">
-            <i class="fas fa-save"></i> GUARDAR TRIAGE
-          </button>
-          <button type="button" class="flex items-center gap-2 bg-sky-400 hover:bg-sky-500 text-white text-xs font-bold px-3 py-2 rounded">
-            LISTADO DE TRIAGES
-          </button>
-        </div>
-
-      </form>
-    </main>
-
+    
+          <!-- Síntomas -->
+          <div class="border rounded p-4">
+            <h3 class="font-semibold text-lg mb-4">Síntomas</h3>
+            <div class="flex items-center gap-2">
+              <input type="text" placeholder="Ej: Dolor de cabeza"
+                     class="flex-1 border rounded px-3 py-2"
+                     [(ngModel)]="nuevoSintoma" name="nuevoSintoma" />
+              <button type="button" class="bg-blue-500 text-white px-4 py-2 rounded"
+                      (click)="agregarSintoma()">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+            <div class="flex flex-wrap gap-2 mt-4">
+              <div *ngFor="let sintoma of triaje.sintomas; let i = index"
+                   class="flex items-center bg-blue-100 text-blue-800 px-3 py-1 rounded-full">
+                <span>{{ sintoma }}</span>
+                <button type="button" class="ml-2 text-blue-600 hover:text-red-500"
+                        (click)="eliminarSintoma(i)">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+    
+          <!-- Prioridad y Estado -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block font-medium mb-1">Prioridad</label>
+              <select class="w-full border rounded px-3 py-2"
+                      [(ngModel)]="triaje.prioridad" name="prioridad" required>
+                <option value="ROJO">Rojo</option>
+                <option value="NARANJA">Naranja</option>
+                <option value="AMARILLO">Amarillo</option>
+                <option value="VERDE">Verde</option>
+                <option value="AZUL">Azul</option>
+              </select>
+            </div>
+            <div>
+              <label class="block font-medium mb-1">Estado</label>
+              <select class="w-full border rounded px-3 py-2"
+                      [(ngModel)]="triaje.estado" name="estado" required>
+                <option value="EN_ESPERA">En espera</option>
+                <option value="EN_ATENCION">En atención</option>
+                <option value="ATENDIDO">Atendido</option>
+                <option value="DERIVADO">Derivado</option>
+                <option value="CANCELADO">Cancelado</option>
+              </select>
+            </div>
+          </div>
+    
+          <!-- Botones -->
+          <div class="text-right">
+            <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">
+              Guardar Triaje
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
-
-  <script>
-    document.querySelectorAll('input[type="text"], textarea').forEach(el => {
-      el.addEventListener('focus', function () {
-        if (!this.dataset.edited) {
-          this.value = '';
-          this.dataset.edited = 'true';
-        }
-      });
-    });
-  </script>
 </body>
 </html>

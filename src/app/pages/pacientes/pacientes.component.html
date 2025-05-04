@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Software Médico</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-[#6cb0e6] to-white">
+
+  <div class="flex">
+    <!-- Sidebar -->
+    <nav class="flex flex-col border-r border-gray-300 bg-white w-56 min-h-screen text-[#002a4e]">
+      <button aria-label="Menu" class="bg-[#2a8de1] text-white p-2 m-3 rounded shadow-md w-10 h-10 flex items-center justify-center">
+        <i class="fas fa-bars"></i>
+      </button>
+      <a href="paciente" class="flex items-center gap-2 px-5 py-3 font-bold border-b border-gray-300 hover:bg-[#e6f0fa]">
+        <i class="fas fa-procedures"></i> PACIENTES
+      </a>
+      <a href="#" class="flex items-center gap-2 px-5 py-3 font-bold border-b border-gray-300 hover:bg-[#e6f0fa]">
+        <i class="fas fa-stethoscope"></i> ATENDER PACIENTE
+      </a>
+      <a href="triage" class="flex items-center gap-2 px-5 py-3 font-bold border-b border-gray-300 hover:bg-[#e6f0fa]">
+        <i class="fas fa-building"></i> TRIAGE
+      </a>
+      <a href="#" class="flex items-center gap-2 px-5 py-3 font-bold border-b border-gray-300 hover:bg-[#e6f0fa]">
+        <i class="fas fa-user-friends"></i> ASISTENTE DE CITAS
+      </a>
+      <a href="reporte" class="flex items-center gap-2 px-5 py-3 font-bold border-b border-gray-300 hover:bg-[#e6f0fa]">
+        <i class="fas fa-chart-bar"></i> REPORTES
+      </a>
+      <a href="#" class="flex items-center gap-2 px-5 py-3 font-bold border-b border-gray-300 hover:bg-[#e6f0fa]">
+        <img src="https://storage.googleapis.com/a1aa/image/a7795423-cd3c-4988-6c8a-7c06f2b9425b.jpg" alt="CIE 10" class="w-5 h-5" />
+        CIE 10
+      </a>
+      <a href="#" class="flex items-center gap-2 px-5 py-3 font-bold border-b border-gray-300 hover:bg-[#e6f0fa]">
+        <img src="https://storage.googleapis.com/a1aa/image/6de32a5b-9b3a-4c5b-0e57-b988033e2674.jpg" alt="CUPS" class="w-5 h-5" />
+        CUPS
+      </a>
+      <a href="#" class="flex items-center gap-2 px-5 py-3 font-bold border-b border-gray-300 hover:bg-[#e6f0fa]">
+        <i class="fas fa-dollar-sign"></i> TARIFAS
+      </a>
+    </nav>
+
+    <!-- Registro de Paciente -->
+    <div class="flex-grow p-8 flex justify-center">
+      <div class="w-full max-w-xl bg-white shadow-lg rounded-lg">
+        <div class="bg-blue-600 text-white text-center py-4 rounded-t-lg">
+          <h2 class="text-xl font-bold">Registro de Nuevo Paciente</h2>
+        </div>
+        <div class="p-6">
+          <form (ngSubmit)="onSubmit()" #pacienteForm="ngForm" class="space-y-6">
+            <div *ngIf="mensajeExito" class="bg-green-100 text-green-800 p-4 rounded relative">
+              {{ mensajeExito }}
+              <button type="button" class="absolute top-2 right-2" (click)="mensajeExito = null">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+            <div *ngIf="mensajeError" class="bg-red-100 text-red-800 p-4 rounded relative">
+              {{ mensajeError }}
+              <button type="button" class="absolute top-2 right-2" (click)="mensajeError = null">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+
+            <div>
+              <label for="documento_identidad" class="block font-bold mb-1">Documento de Identidad</label>
+              <input id="documento_identidad" type="text" required name="documento_identidad"
+                     [(ngModel)]="paciente.documento_identidad"
+                     class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+              <p class="text-sm text-gray-500 mt-1">Ingrese el número completo sin puntos ni guiones</p>
+            </div>
+
+            <div>
+              <label for="fecha_nacimiento" class="block font-bold mb-1">Fecha de Nacimiento</label>
+              <input id="fecha_nacimiento" type="date" required name="fecha_nacimiento"
+                     [(ngModel)]="paciente.fecha_nacimiento"
+                     class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+            </div>
+
+            <div>
+              <label class="block font-bold mb-1">Género</label>
+              <select name="genero" required [(ngModel)]="paciente.genero"
+                      class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                <option value="" disabled selected>Seleccione una opción</option>
+                <option value="masculino">Masculino</option>
+                <option value="femenino">Femenino</option>
+                <option value="otro">Otro</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block font-bold mb-1">Alergias</label>
+              <div class="flex gap-2 mb-2">
+                <input type="text" name="nuevaAlergia" [(ngModel)]="nuevaAlergia"
+                       class="flex-grow border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                       placeholder="Ej: Penicilina, polen, etc." />
+                <button type="button" (click)="agregarAlergia()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                  <i class="fas fa-plus-circle"></i>
+                </button>
+              </div>
+              <div *ngIf="paciente.alergias.length > 0" class="flex flex-wrap gap-2">
+                <div *ngFor="let alergia of paciente.alergias; let i = index" class="flex items-center bg-blue-100 text-blue-800 px-3 py-1 rounded-full">
+                  <span>{{ alergia }}</span>
+                  <button type="button" (click)="eliminarAlergia(i)" class="ml-2 text-blue-600 hover:text-red-600">
+                    <i class="fas fa-times-circle"></i>
+                  </button>
+                </div>
+              </div>
+              <p class="text-sm text-gray-500 mt-1">Agregue todas las alergias conocidas del paciente</p>
+            </div>
+
+            <div>
+              <label for="contacto_emergencia" class="block font-bold mb-1">Contacto de Emergencia</label>
+              <input id="contacto_emergencia" type="text" required name="contacto_emergencia"
+                     [(ngModel)]="paciente.contacto_emergencia"
+                     class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+              <p class="text-sm text-gray-500 mt-1">Número telefónico completo</p>
+            </div>
+
+            <div class="text-center">
+              <button type="submit" [disabled]="!pacienteForm.form.valid"
+                      class="bg-blue-600 text-white text-lg font-semibold px-6 py-3 rounded-lg hover:bg-blue-700 transition">
+                <i class="fas fa-save mr-2"></i>Registrar Paciente
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
