@@ -2,18 +2,22 @@
 Sistema web de triaje hospitalario desarrollado con Angular (frontend) y Laravel (backend). Este proyecto permite gestionar pacientes, personal de salud, recursos hospitalarios, inventarios, y más.
 
 # 📸 Capturas de Pantalla
-![Pantalla de inicio](img/Inicio.jpg)
+![Pantalla de inicio](img/Inicio.jpeg)
 
 
 
 # Formulario de triaje
 
-![Pantalla de Triage](img/Triage.png)
+![Pantalla de Triage](img/Triage.jpeg)
+
+# Formulario de Login
+
+![Pantalla de Triage](img/Login.jpeg)
 
 
 # Formulario de Paciente
 
-![Pantalla de Triage](img/paciente.png)
+![Pantalla de Triage](img/paciente.jpeg)
 
 # 🛠 Manual de Instalación
 Requisitos
