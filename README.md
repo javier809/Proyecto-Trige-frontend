@@ -58,15 +58,8 @@ Inicia el servidor backend:
 
 php artisan serve
 # 🗃 Copia de la Base de Datos
-Dentro del repositorio encontrarás una carpeta llamada database/ que contiene un archivo triaje.sql. Para restaurar la base de datos:
-
-Crea una base de datos llamada triaje en tu gestor (MySQL o MariaDB).
-
-Importa el archivo:
-
-
-mysql -u usuario -p triaje < database/triaje.sql
-Cambia usuario por el nombre de tu usuario MySQL.
+Dentro del repositorio del proyecto tendras que levantar el servidor laragon y abrir el proyecto ApiTriaje en Visual Code. Atraves de la terminal de Laragon debes Dirigirte a la carpeta ApiTriaje y ejecutar el comando "Php Artisan Migrate" esta hará una migracion de todas las talblas.
+Nota: Previamente ya debe crearse una base de Datos en HeidiSQL con el Nombre de ApiTriaje. Verificar así mismo que tu usuario y contraseña de la conexion sean las mismas
 
 # 🧑‍💻 Autores
 Javier Ortuño 
