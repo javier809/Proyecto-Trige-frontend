@@ -1,27 +1,77 @@
-# ProyectofinalTriaje
+ProyectoFinalTriaje
+Sistema web de triaje hospitalario desarrollado con Angular (frontend) y Laravel (backend). Este proyecto permite gestionar pacientes, personal de salud, recursos hospitalarios, inventarios, y más.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.4.
+📸 Capturas de Pantalla
+Vista principal
 
-## Development server
+Formulario de triaje
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+💡 Guarda tus imágenes en la carpeta docs/capturas para mantener todo organizado.
 
-## Code scaffolding
+🛠 Manual de Instalación
+Requisitos
+Node.js (v18 o superior)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Angular CLI
 
-## Build
+Git
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Laravel (para backend)
 
-## Running unit tests
+MySQL o MariaDB
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+PHP 8.1 o superior
 
-## Running end-to-end tests
+Paso 1: Clonar el repositorio
+bash
+Copiar
+Editar
+git clone https://github.com/tu-usuario/ProyectoFinalTriaje.git
+cd ProyectoFinalTriaje
+Paso 2: Instalar dependencias de Angular
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+npm install
+Paso 3: Iniciar el servidor Angular
 
-## Further help
+ng serve
+Accede a la app en: http://localhost:4200
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Paso 4: Instalar y configurar el backend (Laravel)
+Ve a la carpeta del backend (si está en una subcarpeta como backend/)
+
+Instala las dependencias:
+
+
+composer install
+Copia el archivo .env.example a .env y configura tu base de datos.
+
+Genera la clave de la aplicación:
+
+bash
+Copiar
+Editar
+php artisan key:generate
+Importa la base de datos (ver siguiente sección).
+
+Inicia el servidor backend:
+
+
+php artisan serve
+🗃 Copia de la Base de Datos
+Dentro del repositorio encontrarás una carpeta llamada database/ que contiene un archivo triaje.sql. Para restaurar la base de datos:
+
+Crea una base de datos llamada triaje en tu gestor (MySQL o MariaDB).
+
+Importa el archivo:
+
+
+mysql -u usuario -p triaje < database/triaje.sql
+Cambia usuario por el nombre de tu usuario MySQL.
+
+🧑‍💻 Autores
+Tu Nombre - @tuusuario
+
+Otros colaboradores...
+
+📄 Licencia
+Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles.
