@@ -8,7 +8,7 @@ Sistema web de triaje hospitalario desarrollado con Angular (frontend) y Laravel
 
 # Formulario de triaje
 
-💡 Guarda tus imágenes en la carpeta docs/capturas para mantener todo organizado.
+![Pantalla de Triage](img/Triage.png)
 
 # 🛠 Manual de Instalación
 Requisitos
