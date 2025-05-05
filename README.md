@@ -10,6 +10,11 @@ Sistema web de triaje hospitalario desarrollado con Angular (frontend) y Laravel
 
 ![Pantalla de Triage](img/Triage.png)
 
+
+# Formulario de Paciente
+
+![Pantalla de Triage](img/paciente.png)
+
 # 🛠 Manual de Instalación
 Requisitos
 Node.js (v18 o superior)
